@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>AI音乐生成器</title>
+</head>
+<body>
+    <h1>AI音乐生成器</h1>
+    <form action="/generate" method="post">
+        <label>提示词:</label><br>
+        <input type="text" name="prompt" size="60" value="A calming piano melody with gentle rain in the background"><br>
+        <label>模型:</label>
+        <select name="model">
+            <option value="small">small</option>
+            <option value="medium">medium</option>
+        </select><br>
+        <label>最大token数 (可选):</label>
+        <input type="number" name="max_tokens"><br>
+        <button type="submit">生成音乐</button>
+    </form>
+</body>
+</html>

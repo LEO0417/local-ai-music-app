@@ -66,6 +66,14 @@ python main.py --prompt "A peaceful piano melody with soft strings"
 python main.py --output my_music.wav
 ```
 
+### 启动Web界面
+
+```bash
+# 在项目根目录
+python web_app.py
+# 浏览器访问 http://localhost:8000
+```
+
 ### 高级选项
 
 ```bash

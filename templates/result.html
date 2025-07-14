@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    <title>生成结果</title>
+</head>
+<body>
+    <h1>生成结果</h1>
+    <p>文件已生成: {{ filename }}</p>
+    <audio controls>
+        <source src="{{ url_for('static', filename=filename) }}" type="audio/wav">
+        您的浏览器不支持音频播放。
+    </audio>
+    <br>
+    <a href="{{ url_for('static', filename=filename) }}" download>下载</a>
+    <br>
+    <a href="{{ url_for('index') }}">再生成一个</a>
+</body>
+</html>
