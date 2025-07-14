@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>AI音乐生成器</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        label { display: block; margin-top: 10px; }
+        input[type="text"], input[type="number"] { width: 100%; padding: 8px; }
+        button { margin-top: 20px; padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>AI音乐生成器</h1>
+    <form method="post">
+        <label for="prompt">提示词 (Prompt)</label>
+        <input id="prompt" type="text" name="prompt" value="{{ request.form.get('prompt', '') }}" required>
+
+        <label for="model">模型选择</label>
+        <select id="model" name="model">
+            <option value="small" {% if request.form.get('model') == 'small' %}selected{% endif %}>Small</option>
+            <option value="medium" {% if request.form.get('model') == 'medium' %}selected{% endif %}>Medium</option>
+        </select>
+
+        <label for="max_tokens">最大token数 (可选)</label>
+        <input id="max_tokens" type="number" name="max_tokens" value="{{ request.form.get('max_tokens', '') }}">
+
+        <button type="submit">生成音乐</button>
+    </form>
+
+    {% if audio_file %}
+    <h2>生成结果</h2>
+    <audio controls>
+        <source src="{{ url_for('static', filename=audio_file) }}" type="audio/wav">
+        您的浏览器不支持音频播放。
+    </audio>
+    <p><a href="{{ url_for('static', filename=audio_file) }}" download>下载音乐</a></p>
+    {% endif %}
+</body>
+</html>
