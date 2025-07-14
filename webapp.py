@@ -45,5 +45,23 @@ def index():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    import argparse
+
+    parser = argparse.ArgumentParser(description='AI音乐生成Web服务')
+    parser.add_argument(
+        '--port',
+        type=int,
+        default=int(os.environ.get('PORT', 5000)),
+        help='服务端口，默认5000，可通过环境变量PORT或此参数指定'
+    )
+    parser.add_argument(
+        '--debug',
+        action='store_true',
+        default=os.environ.get('FLASK_DEBUG') == '1',
+        help='开启调试模式'
+    )
+
+    args = parser.parse_args()
+
+    app.run(host='0.0.0.0', port=args.port, debug=args.debug)
 
