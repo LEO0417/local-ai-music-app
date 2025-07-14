@@ -85,6 +85,24 @@ python main.py --model medium --prompt "A smooth jazz piece with saxophone, pian
 python main.py --help
 ```
 
+### Web界面
+
+项目还提供了简单的Flask Web界面，运行以下命令启动：
+
+```bash
+python webapp.py
+```
+
+默认监听5000端口，可通过`--port`参数或`PORT`环境变量指定其他端口：
+
+```bash
+python webapp.py --port 8000
+# 或
+PORT=8000 python webapp.py
+```
+
+然后在浏览器中访问 `http://localhost:<端口>`。
+
 ## 📚 代码说明
 
 ### 文件作用详解
